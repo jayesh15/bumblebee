@@ -13,6 +13,7 @@ import Attendance from "./pages/student/Attendance"
 import ManageTasks from "./pages/faculty/ManageTasks"
 import MarkAttendance from "./pages/faculty/MarkAttendance"
 import Classes from "./pages/faculty/Classes"
+import NotFound from "./pages/notFound/NotFound"
 function App() {
 
 
@@ -38,6 +39,7 @@ function App() {
             <Route path="timetable" element={<Timetable />} />
             <Route path="attendance" element={<Attendance />} />
           </Route>
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>
     </>
