@@ -20,16 +20,16 @@ function App() {
     <>
       <Router>
         <Routes>
-          <Route path="/" element={<Home />}>
+          <Route exact path="/" element={<Home />}>
             <Route path="login" element={<Login />} />
             <Route path="register" element={<Register />} />
           </Route>
-          <Route path="/faculty" element={<Faculty />}>
+          <Route exact path="/faculty" element={<Faculty />}>
             <Route path="managetasks" element={<ManageTasks />} />
             <Route path="markattendance" element={<MarkAttendance />} />
             <Route path="classes" element={<Classes />} />
           </Route>
-          <Route path="/student" element={<Student />}>
+          <Route exact path="/student" element={<Student />}>
             <Route path="events" element={<Events />} />
             <Route path="tasks" element={<Tasks />} />
             <Route path="reports" element={<Reports />} />
