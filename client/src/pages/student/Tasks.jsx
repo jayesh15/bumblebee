@@ -1,6 +1,6 @@
 const Tasks = () => {
   return (
-    <div>Tasks</div>
+    <div className="  flex w-full">Tasks</div>
   )
 }
 

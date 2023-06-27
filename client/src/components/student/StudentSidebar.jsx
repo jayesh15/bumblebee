@@ -1,6 +1,8 @@
 const StudentSidebar = () => {
   return (
-    <div>StudentSidebar</div>
+    <div className="bg-white-100 w-[300px] h-full">
+      Sidebar
+    </div>
   )
 }
 
