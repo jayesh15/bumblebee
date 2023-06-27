@@ -18,6 +18,7 @@ import FacultyDashboard from "./pages/faculty/FacultyDashboard"
 import StudentSettings from "./pages/student/StudentSettings"
 import StudentDashboard from "./pages/student/StudentDashboard"
 import FacultySettings from "./pages/faculty/FacultySettings"
+import Content from "./pages/home/Content"
 function App() {
 
 
@@ -27,6 +28,7 @@ function App() {
         <div className=" flex w-full h-screen">
           <Routes>
             <Route exact path="/" element={<Home />}>
+            <Route path="" element={<Content />} />
               <Route path="login" element={<Login />} />
               <Route path="register" element={<Register />} />
             </Route>
