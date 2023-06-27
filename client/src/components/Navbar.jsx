@@ -10,6 +10,7 @@ const Navbar = () => {
     setOptions(prev => !prev)
 
   }
+  
   const handleClick = () => {
     setActive(false)
     setOptions(false)
@@ -57,21 +58,21 @@ const Navbar = () => {
             options && (
               <div className="z-[1000] md:hidden bg-white absolute right-0 top-16 h-auto px-16 py-4 border-[1px] border-gray-300 rounded-lg">
                 <div className="flex flex-col gap-4 w-full h-full text-lg font-semibold tracking-wide">
-                  <span className=" cursor-pointer">Home</span>
-                  <span className=" whitespace-nowrap cursor-pointer">About Us</span>
-                  <span className=" cursor-pointer">Benefits</span>
-                  <span className=" cursor-pointer">Teachers</span>
-                  <Link to="/login">
+                  <span onClick={handleOptions} className=" cursor-pointer">Home</span>
+                  <span onClick={handleOptions} className=" whitespace-nowrap cursor-pointer">About Us</span>
+                  <span onClick={handleOptions} className=" cursor-pointer">Benefits</span>
+                  <span onClick={handleOptions} className=" cursor-pointer">Teachers</span>
+                  <Link onClick={handleOptions} to="/login">
                     <button className="whitespace-nowrap border-[1px] border-blue-600 px-4 py-2 rounded-md font-semibold bg-white text-blue-600">Sign in</button>
                   </Link>
-                  <Link to="/register">
+                  <Link onClick={handleOptions} to="/register">
                     <button className="whitespace-nowrap border-[1px] border-blue-600 px-4 py-2 rounded-md font-semibold bg-blue-600 text-white">Sign up</button>
                   </Link>
 
                 </div>
               </div>
             )
-          }
+          } 
 
         </div>
       </div>
