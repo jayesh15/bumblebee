@@ -10,48 +10,31 @@ import { Link, useLocation } from "react-router-dom"
 const links = [
     {
         id: 1,
-        path: "/student/",
+        path: "/faculty/",
         name: "Dashboard",
         icon: <MdOutlineDashboard className="text-[20px] min-w-fit"/>
     },
     {
         id: 2,
-        path: "/student/events",
-        name: "Upcoming Events",
-        icon: <MdOutlineEvent className=" text-[20px]" />
-    },
-    {
-        id: 3,
-        path: "/student/tasks",
+        path: "/faculty/managetasks",
         name: "Tasks",
         icon: <BiTask className="text-[20px] min-w-fit"/>
     },
     {
-        id: 4,
-        path: "/student/reports",
-        name: "Reports",
-        icon: <AiOutlineFileDone className="text-[20px] min-w-fit"/>
-    },
-    {
-        id: 5,
-        path: "/student/attendance",
+        id: 3,
+        path: "/faculty/markattendance",
         name: "Attendance",
         icon: <LiaUserCheckSolid className="text-[20px] min-w-fit"/>
     },
+    
     {
-        id: 6,
-        path: "/student/timetable",
-        name: "Timetable",
-        icon: <AiOutlineTable className="text-[20px] min-w-fit"/>
-    },
-    {
-        id: 7,
-        path: "/student/calender",
-        name: "Calender",
+        id: 4,
+        path: "/faculty/classes",
+        name: "Classes",
         icon: <SlCalender className="text-[20px] min-w-fit"/>
     },
 ]
-const MobileNavbar = () => {
+const FacultyNavbar = () => {
     const location = useLocation()
     const [active, setActive] = useState(false)
     const handleActive = () => {
@@ -71,12 +54,10 @@ const MobileNavbar = () => {
                 <div>
                     <span className=" font-semibold uppercase tracking-wide">
                         {
-                            location.pathname === "/student/events" ? "Events" :
-                            location.pathname === "/student/tasks"? "Tasks" :
-                            location.pathname === "/student/reports"? "Reports" :
-                            location.pathname === "/student/attendance"? "Attendance" :
-                            location.pathname === "/student/timetable"? "Timetable" :
-                            location.pathname === "/student/calender"? "Calender" :
+                            location.pathname === "/faculty/events" ? "Events" :
+                            location.pathname === "/faculty/managetasks"? "Tasks" :
+                            location.pathname === "/faculty/markattendance"? "Attendance" :
+                            location.pathname === "/faculty/classes"? "Classes" :
                             "Dashboard"
                         
                         }
@@ -116,7 +97,7 @@ const MobileNavbar = () => {
                             </div>
                             {/**Settings */}
                             <div className="flex w-full flex-col gap-2">
-                                <Link onClick={handleClick} to="/student/settings">
+                                <Link onClick={handleClick} to="/faculty/settings">
                                     <div className="group hover:bg-white/90 flex p-2 sm:px-12 text-white hover:text-blue-900 items-center gap-2 rounded-md ease-in-out duration-150 transition-all">
                                         <MdSettings className=" text-[20px]"/>
                                         <span className=" font-semibold tracking-wider text-lg">Settings</span>
@@ -133,4 +114,4 @@ const MobileNavbar = () => {
     )
 }
 
-export default MobileNavbar
+export default FacultyNavbar
