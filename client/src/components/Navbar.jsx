@@ -24,10 +24,10 @@ const Navbar = () => {
           </div>
           {/**Links */}
           <div className=" hidden md:flex items-center gap-4">
-            <span>Home</span>
-            <span className=" whitespace-nowrap">About Us</span>
-            <span>Benefits</span>
-            <span>Teachers</span>
+            <span className=" cursor-pointer">Home</span>
+            <span className=" whitespace-nowrap cursor-pointer">About Us</span>
+            <span className=" cursor-pointer">Benefits</span>
+            <span className=" cursor-pointer">Teachers</span>
 
           </div>
           {/**Buttons */}
@@ -44,7 +44,7 @@ const Navbar = () => {
           </div>
           {/**Overlay */}
           {
-            options && <div onClick={handleClick} className="fixed right-0 top-0  w-full h-full"></div>
+            options && <div onClick={handleClick} className="md:hidden bg-black/20 fixed right-0 top-0  w-full h-full"></div>
           }
           {/**Options */}
           {
