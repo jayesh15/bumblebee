@@ -56,6 +56,9 @@ const MobileNavbar = () => {
     const handleActive = () => {
         setActive(prev => !prev)
     }
+    const handleClick = () =>{
+        setActive(false)
+    }
     return (
         <div className="z-[100] top-0 left-0 h-16 w-full">
             <div className=" flex px-2 h-full w-full items-center justify-between  bg-white border-b-[1px] border-gray-300">
@@ -78,8 +81,8 @@ const MobileNavbar = () => {
                 </div>
 
                 {/**Options */}
-                <div className={`fixed ${active ? " opacity-100" : " opacity-0"} top-0 right-0 bg-black/50 w-full h-full ease-in-out duration-1000 transition-all`} />
-                <div className={`fixed ${active ? "right-0" : " -right-[100%]"} top-0 bg-blue-700 w-[60%] h-full ease-in-out duration-1000 transition-all`} >
+                <div onClick={handleClick} className={`fixed ${active ? " opacity-100" : " opacity-0"} top-0 right-0 bg-black/50 w-full h-full ease-in-out duration-500 transition-all`} />
+                <div className={`fixed ${active ? "right-0" : " -right-[100%]"} top-0 bg-blue-700 w-[60%] h-full ease-in-out duration-500 transition-all`} >
                     <div className="flex flex-col w-full h-full">
                         <div className="flex px-12 items-center w-full min-h-16 h-16 ">
                             <h1 className=" text-yellow-400 font-bold tracking-wide text-lg">BumbleBee</h1>
@@ -89,7 +92,7 @@ const MobileNavbar = () => {
                             <div className=" flex w-full flex-col gap-2">
                                 {
                                     links.map((link) => (
-                                        <Link key={link.id} to={`${link.path}`}>
+                                        <Link onClick={handleClick} key={link.id} to={`${link.path}`}>
                                             <div className="group hover:bg-white/90 px-12 py-2 flex text-white hover:text-blue-900 items-center gap-2 rounded-md ease-in-out duration-150 transition-all">
                                                 {link.icon}
                                                 <span className="font-semibold tracking-wider text-lg">{link.name}</span>
@@ -101,7 +104,7 @@ const MobileNavbar = () => {
                             </div>
                             {/**Settings */}
                             <div className="flex w-full flex-col gap-2">
-                                <Link to="/student/">
+                                <Link onClick={handleClick} to="/student/settings">
                                     <div className="group hover:bg-white/90 flex px-12 py-2 text-white hover:text-blue-900 items-center gap-2 rounded-md ease-in-out duration-150 transition-all">
                                         <MdSettings size={24} />
                                         <span className=" font-semibold tracking-wider text-lg">Settings</span>

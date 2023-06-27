@@ -16,6 +16,7 @@ import Classes from "./pages/faculty/Classes"
 import NotFound from "./pages/notFound/NotFound"
 import StudentDashboard from "./components/student/StudentDashboard"
 import FacultyDashboard from "./pages/faculty/FacultyDashboard"
+import StudentSettings from "./pages/student/StudentSettings"
 function App() {
 
 
@@ -42,6 +43,7 @@ function App() {
             <Route path="attendance" element={<Attendance />} />
             <Route path="calender" element={<Calender />} />
             <Route path="timetable" element={<Timetable />} />
+            <Route path="settings" element={<StudentSettings />} />
             
           </Route>
           <Route path="*" element={<NotFound />} />
