@@ -4,7 +4,7 @@ import { AiOutlineFileDone, AiOutlineTable } from 'react-icons/ai'
 import { MdOutlineDashboard, MdOutlineEvent, MdSettings } from 'react-icons/md'
 import { LiaUserCheckSolid } from 'react-icons/lia'
 import { SlCalender } from 'react-icons/sl'
-import { Link } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 
 
 const links = [
@@ -52,11 +52,12 @@ const links = [
     },
 ]
 const MobileNavbar = () => {
+    const location = useLocation()
     const [active, setActive] = useState(false)
     const handleActive = () => {
         setActive(prev => !prev)
     }
-    const handleClick = () =>{
+    const handleClick = () => {
         setActive(false)
     }
     return (
@@ -68,7 +69,18 @@ const MobileNavbar = () => {
                 </div>
                 {/**Location */}
                 <div>
-                    <span>Dashboard</span>
+                    <span className=" font-semibold uppercase tracking-wide">
+                        {
+                            location.pathname === "/student/events" ? "Events" :
+                            location.pathname === "/student/tasks"? "Tasks" :
+                            location.pathname === "/student/reports"? "Reports" :
+                            location.pathname === "/student/attendance"? "Attendance" :
+                            location.pathname === "/student/timetable"? "Timetable" :
+                            location.pathname === "/student/calender"? "Calender" :
+                            "Dashboard"
+                        
+                        }
+                    </span>
                 </div>
                 {/**Hamburger */}
                 <div>
