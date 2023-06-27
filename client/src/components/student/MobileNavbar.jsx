@@ -12,43 +12,43 @@ const links = [
         id: 1,
         path: "/student/",
         name: "Dashboard",
-        icon: <MdOutlineDashboard size={20} />
+        icon: <MdOutlineDashboard className="text-[20px] min-w-fit"/>
     },
     {
         id: 2,
         path: "/student/events",
         name: "Upcoming Events",
-        icon: <MdOutlineEvent size={20} />
+        icon: <MdOutlineEvent className=" text-[20px]" />
     },
     {
         id: 3,
         path: "/student/tasks",
         name: "Tasks",
-        icon: <BiTask size={20} />
+        icon: <BiTask className="text-[20px] min-w-fit"/>
     },
     {
         id: 4,
         path: "/student/reports",
         name: "Reports",
-        icon: <AiOutlineFileDone size={20} />
+        icon: <AiOutlineFileDone className="text-[20px] min-w-fit"/>
     },
     {
         id: 5,
         path: "/student/attendance",
         name: "Attendance",
-        icon: <LiaUserCheckSolid size={20} />
+        icon: <LiaUserCheckSolid className="text-[20px] min-w-fit"/>
     },
     {
         id: 6,
         path: "/student/timetable",
         name: "Timetable",
-        icon: <AiOutlineTable size={20} />
+        icon: <AiOutlineTable className="text-[20px] min-w-fit"/>
     },
     {
         id: 7,
         path: "/student/calender",
         name: "Calender",
-        icon: <SlCalender size={18} />
+        icon: <SlCalender className="text-[20px] min-w-fit"/>
     },
 ]
 const MobileNavbar = () => {
@@ -62,7 +62,7 @@ const MobileNavbar = () => {
     }
     return (
         <div className="z-[100] top-0 left-0 h-16 w-full">
-            <div className=" flex px-2 h-full w-full items-center justify-between  bg-white border-b-[1px] border-gray-300">
+            <div className=" flex px-2 h-full w-full items-center justify-between  bg-white border-b-[1px] border-gray-200">
                 {/**Profile Img */}
                 <div>
                     <img className="w-12 h-12 rounded-full object-cover object-center" src="/assets/noProfile.png" alt="" />
@@ -95,8 +95,8 @@ const MobileNavbar = () => {
                 {/**Options */}
                 <div onClick={handleClick} className={`fixed ${active ? " opacity-100" : " opacity-0"} top-0 right-0 bg-black/50 w-full h-full ease-in-out duration-500 transition-all`} />
                 <div className={`fixed ${active ? "right-0" : " -right-[100%]"} top-0 bg-blue-700 w-[60%] h-full ease-in-out duration-500 transition-all`} >
-                    <div className="flex flex-col w-full h-full">
-                        <div className="flex px-12 items-center w-full min-h-16 h-16 ">
+                    <div className="flex flex-col justify-between w-full h-full">
+                        <div className="flex px-4 sm:px-12 items-center w-full min-h-16 h-16 ">
                             <h1 className=" text-yellow-400 font-bold tracking-wide text-lg">BumbleBee</h1>
                         </div>
                         <div className="mt-4 flex flex-col overflow-y-auto p-2 items-center justify-between w-full h-full">
@@ -105,7 +105,7 @@ const MobileNavbar = () => {
                                 {
                                     links.map((link) => (
                                         <Link onClick={handleClick} key={link.id} to={`${link.path}`}>
-                                            <div className="group hover:bg-white/90 px-12 py-2 flex text-white hover:text-blue-900 items-center gap-2 rounded-md ease-in-out duration-150 transition-all">
+                                            <div className="group hover:bg-white/90 p-2 sm:px-12 flex text-white hover:text-blue-900 items-center gap-2 rounded-md ease-in-out duration-150 transition-all">
                                                 {link.icon}
                                                 <span className="font-semibold tracking-wider text-lg">{link.name}</span>
                                             </div>
@@ -117,8 +117,8 @@ const MobileNavbar = () => {
                             {/**Settings */}
                             <div className="flex w-full flex-col gap-2">
                                 <Link onClick={handleClick} to="/student/settings">
-                                    <div className="group hover:bg-white/90 flex px-12 py-2 text-white hover:text-blue-900 items-center gap-2 rounded-md ease-in-out duration-150 transition-all">
-                                        <MdSettings size={24} />
+                                    <div className="group hover:bg-white/90 flex p-2 text-white hover:text-blue-900 items-center gap-2 rounded-md ease-in-out duration-150 transition-all">
+                                        <MdSettings className=" text-[20px]"/>
                                         <span className=" font-semibold tracking-wider text-lg">Settings</span>
                                     </div>
                                 </Link>
