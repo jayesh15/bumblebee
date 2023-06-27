@@ -1,7 +1,6 @@
 import { useState } from "react"
 import { BiTask } from 'react-icons/bi'
-import { AiOutlineFileDone, AiOutlineTable } from 'react-icons/ai'
-import { MdOutlineDashboard, MdOutlineEvent, MdSettings } from 'react-icons/md'
+import { MdOutlineDashboard, MdSettings } from 'react-icons/md'
 import { LiaUserCheckSolid } from 'react-icons/lia'
 import { SlCalender } from 'react-icons/sl'
 import { Link, useLocation } from "react-router-dom"
