@@ -65,7 +65,7 @@ const StudentSidebar = () => {
     if (open) {
       timeout = setTimeout(() => {
         setShowText(true);
-      }, 300);
+      }, 200);
     } else {
       setShowText(false);
     }

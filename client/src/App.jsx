@@ -14,9 +14,9 @@ import ManageTasks from "./pages/faculty/ManageTasks"
 import MarkAttendance from "./pages/faculty/MarkAttendance"
 import Classes from "./pages/faculty/Classes"
 import NotFound from "./pages/notFound/NotFound"
-import StudentDashboard from "./components/student/StudentDashboard"
 import FacultyDashboard from "./pages/faculty/FacultyDashboard"
 import StudentSettings from "./pages/student/StudentSettings"
+import StudentDashboard from "./pages/student/StudentDashboard"
 function App() {
 
 
