@@ -1,6 +1,8 @@
 const Footer = () => {
   return (
-    <div>Footer</div>
+    <div className="flex justify-center items-center h-24 bg-blue-950 w-full">
+        <h1 className=" text-white tracking-wide font-semibold text-xl">Bumblebee</h1>
+    </div>
   )
 }
 
