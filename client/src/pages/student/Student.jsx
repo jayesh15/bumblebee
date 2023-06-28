@@ -7,7 +7,7 @@ import StudentHeader from "../../components/student/StudentHeader"
 
 const Student = () => {
   const [isMobile, setIsMobile] = useState(false)
-  const [isProfile, setIsProfile] = useState(0)
+  const [isProfile, setIsProfile] = useState(false)
   useEffect(() => {
     const handleResize = () => {
       
