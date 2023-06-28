@@ -3,6 +3,7 @@ import FacultySidebar from "../../components/faculty/FacultySidebar"
 import { useEffect, useState } from "react";
 import FacultyNavbar from "../../components/faculty/FacultyNavbar";
 import FacultyProfile from "../../components/faculty/FacultyProfile";
+import FacultyGreet from "./FacultyGreet";
 
 
 const Faculty = () => {
@@ -27,7 +28,7 @@ const Faculty = () => {
       }
       <div className=" flex flex-col flex-1 overflow-y-auto bg-primary">
       {
-          !isMobile && "H"
+          !isMobile && <FacultyGreet/>
         }
         <Outlet />
       </div>
