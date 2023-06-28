@@ -122,7 +122,7 @@ const MobileNavbar = () => {
                             </div>
                             {/**Settings */}
                             <div className="flex w-full flex-col gap-2">
-                                <Link onClick={handleClick} to="/student/settings">
+                                <Link onClick={handleClick} to="/">
                                     <div className="group hover:bg-sky-100 flex p-2 sm:px-12 text-gray-200 hover:text-blue-900 items-center gap-4 rounded-md ease-in-out duration-150 transition-all">
                                         <MdLogout className=" text-[22px]" />
                                         <span className=" font-medium tracking-wide text-lg">Logout</span>
