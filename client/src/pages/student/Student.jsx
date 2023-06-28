@@ -3,6 +3,7 @@ import StudentSidebar from "../../components/student/StudentSidebar"
 import { useEffect, useState } from "react"
 import MobileNavbar from "../../components/student/MobileNavbar"
 import StudentProfile from "../../components/student/StudentProfile"
+import StudentHeader from "../../components/student/StudentHeader"
 
 const Student = () => {
   const [isMobile, setIsMobile] = useState(false)
@@ -25,7 +26,10 @@ const Student = () => {
       {
         isMobile ? <MobileNavbar/>:<StudentSidebar />
       }
-      <div className=" flex flex-1 overflow-y-auto bg-primary">
+      <div className=" flex flex-col flex-1 overflow-y-auto bg-primary">
+        {
+          !isMobile && <StudentHeader/>
+        }
         <Outlet />
       </div>
       {
