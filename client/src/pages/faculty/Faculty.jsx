@@ -3,7 +3,7 @@ import FacultySidebar from "../../components/faculty/FacultySidebar"
 import { useEffect, useState } from "react";
 import FacultyNavbar from "../../components/faculty/FacultyNavbar";
 import FacultyProfile from "../../components/faculty/FacultyProfile";
-import FacultyHeader from "../../components/faculty/facultyHeader";
+
 
 const Faculty = () => {
   const [isMobile, setIsMobile] = useState(false)
@@ -27,7 +27,7 @@ const Faculty = () => {
       }
       <div className=" flex flex-col flex-1 overflow-y-auto bg-primary">
       {
-          !isMobile && <FacultyHeader/>
+          !isMobile && "H"
         }
         <Outlet />
       </div>
