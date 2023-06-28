@@ -1,6 +1,7 @@
 const StudentDashboard = () => {
   return (
-    <div>StudentDashboard</div>
+    <div className="p-4 flex w-full">
+    </div>
   )
 }
 

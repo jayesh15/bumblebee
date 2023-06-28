@@ -25,7 +25,7 @@ const Student = () => {
       {
         isMobile ? <MobileNavbar/>:<StudentSidebar />
       }
-      <div className=" flex flex-1">
+      <div className=" flex flex-1 overflow-y-auto bg-primary">
         <Outlet />
       </div>
       {

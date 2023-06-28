@@ -36,7 +36,7 @@ const StudentProfile = () => {
                     <div className=' border-r-2 p-2 border-gray-300'>
                         <BsBell className=' text-gray-500 text-[20px]' />
                     </div>
-                    <div className='w-20 h-12'>
+                    <div className=' aspect-square w-1/4'>
                         <img className='border-[1px] border-gray-400 w-full h-full rounded-full object-cover object-center' src="/assets/noProfile.png" alt="" />
                     </div>
                     <div className='flex flex-col items-start w-full'>
