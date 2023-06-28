@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { BiTask } from 'react-icons/bi'
-import { MdOutlineDashboard, MdSettings } from 'react-icons/md'
+import { MdLogout, MdOutlineDashboard, MdSettings } from 'react-icons/md'
 import { LiaUserCheckSolid } from 'react-icons/lia'
 import { SlCalender } from 'react-icons/sl'
 import { Link, useLocation } from "react-router-dom"
@@ -9,29 +9,35 @@ import { Link, useLocation } from "react-router-dom"
 const links = [
     {
         id: 1,
-        path: "/faculty/",
+        path: "/faculty",
         name: "Dashboard",
-        icon: <MdOutlineDashboard className="text-[20px] min-w-fit"/>
+        icon: <MdOutlineDashboard className="text-[22px]"/>
     },
     {
         id: 2,
         path: "/faculty/managetasks",
         name: "Tasks",
-        icon: <BiTask className="text-[20px] min-w-fit"/>
+        icon: <BiTask className="text-[22px]"/>
     },
     {
         id: 3,
         path: "/faculty/markattendance",
         name: "Attendance",
-        icon: <LiaUserCheckSolid className="text-[20px] min-w-fit"/>
+        icon: <LiaUserCheckSolid className="text-[22px]"/>
     },
     
     {
         id: 4,
         path: "/faculty/classes",
         name: "Classes",
-        icon: <SlCalender className="text-[20px] min-w-fit"/>
+        icon: <SlCalender className="text-[22px]"/>
     },
+    {
+        id: 5,
+        path: "/faculty/settings",
+        name: "Settings",
+        icon: <MdSettings className=' text-[22px]' />
+      },
 ]
 const FacultyNavbar = () => {
     const location = useLocation()
@@ -73,21 +79,21 @@ const FacultyNavbar = () => {
                 </div>
 
                 {/**Options */}
-                <div onClick={handleClick} className={`fixed ${active ? " opacity-100" : " opacity-0"} top-0 right-0 bg-black/50 w-full h-full ease-in-out duration-500 transition-all`} />
-                <div className={`fixed ${active ? "right-0" : " -right-[100%]"} top-0 bg-blue-700 w-[60%] h-full ease-in-out duration-500 transition-all`} >
+                <div onClick={handleClick} className={`fixed ${active ? " opacity-100 right-0" : " opacity-0 -right-[100%]"} top-0  bg-black/40 w-full h-full`} />
+                <div className={`fixed ${active ? "right-0" : " -right-[100%]"} top-0 bg-secondary w-[60%] h-full ease-in-out duration-500 transition-all`} >
                     <div className="flex flex-col justify-between w-full h-full">
-                        <div className="flex px-4 sm:px-12 items-center w-full min-h-16 h-16 ">
-                            <h1 className=" text-yellow-400 font-bold tracking-wide text-lg">BumbleBee</h1>
+                        <div className='flex w-full justify-center items-center min-h-16 h-16 border-b-[1px]'>
+                            <h1 className='font-bold text-white text-lg tracking-wide'>Bumblebee</h1>
                         </div>
-                        <div className="mt-4 flex flex-col overflow-y-auto p-2 items-center justify-between w-full h-full">
+                        <div className="mt-4 flex flex-col overflow-y-auto p-4 items-center justify-between w-full h-full">
                             {/**Actions */}
                             <div className=" flex w-full flex-col gap-2">
                                 {
                                     links.map((link) => (
                                         <Link onClick={handleClick} key={link.id} to={`${link.path}`}>
-                                            <div className="group hover:bg-white/90 p-2 sm:px-12 flex text-white hover:text-blue-900 items-center gap-2 rounded-md ease-in-out duration-150 transition-all">
+                                            <div className={` ${location.pathname === link.path ? "bg-white text-blue-600" : " text-gray-200"} hover:bg-sky-100 p-2 sm:px-12 flex hover:text-blue-900 items-center gap-4 rounded-md ease-in-out duration-150 transition-all`}>
                                                 {link.icon}
-                                                <span className="font-semibold tracking-wider text-lg">{link.name}</span>
+                                                <span className="font-medium tracking-wide text-lg">{link.name}</span>
                                             </div>
                                         </Link>
                                     ))
@@ -96,10 +102,10 @@ const FacultyNavbar = () => {
                             </div>
                             {/**Settings */}
                             <div className="flex w-full flex-col gap-2">
-                                <Link onClick={handleClick} to="/faculty/settings">
-                                    <div className="group hover:bg-white/90 flex p-2 sm:px-12 text-white hover:text-blue-900 items-center gap-2 rounded-md ease-in-out duration-150 transition-all">
-                                        <MdSettings className=" text-[20px]"/>
-                                        <span className=" font-semibold tracking-wider text-lg">Settings</span>
+                                <Link onClick={handleClick} to="/">
+                                    <div className="group hover:bg-sky-100 flex p-2 sm:px-12 text-gray-200 hover:text-blue-900 items-center gap-4 rounded-md ease-in-out duration-150 transition-all">
+                                        <MdLogout className=" text-[22px]" />
+                                        <span className=" font-medium tracking-wide text-lg">Logout</span>
                                     </div>
                                 </Link>
                             </div>
