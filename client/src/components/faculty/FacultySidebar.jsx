@@ -46,7 +46,7 @@ const FacultySidebar = () => {
   return (
     <div className="relative w-fit flex bg-white border-r-[1px] h-full ease-out duration-500 transition-all">
       <div className="flex flex-col w-full h-full">
-        <div className='flex w-full justify-center items-center h-16 border-b-[1px]'>
+        <div className='mt-1 p-4 flex w-full justify-center items-center border-b-[1px] h-16'>
           <h1 className='font-bold text-lg tracking-wide'>Bumblebee</h1>
         </div>
         <div className="mt-4 flex flex-col overflow-y-auto p-4 items-center justify-between w-full h-full">

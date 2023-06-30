@@ -1,7 +1,7 @@
 import {BiSearch} from 'react-icons/bi'
 const FacultyGreet = () => {
   return (
-    <div className="flex p-2 justify-between w-full items-center h-14 bg-white border-b-[1px] ">
+    <div className="flex p-2 justify-between w-full items-center h-16 bg-white border-b-[1px] ">
         <div className='flex w-full'>
             <h1 className=" text-lg font-semibold tracking-wide">Welcome Teacher</h1>
         </div>

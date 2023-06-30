@@ -30,10 +30,10 @@ const Tasks = [
 const StudentProfile = () => {
     return (
         <div className="flex w-[300px] h-full border-l-[1px] bg-white">
-            <div className="flex p-2 flex-col w-full h-full justify-start">
+            <div className="flex flex-col w-full h-full justify-start">
                 {/**Profile Detail */}
-                <div className="flex gap-2 items-center h-20 w-full">
-                    <div className=' border-r-2 p-2 border-gray-300'>
+                <div className="p-2 flex gap-2 items-center h-16 border-b-[1px] w-full">
+                    <div className='p-2 border-r-2 border-gray-300'>
                         <BsBell className=' text-gray-500 text-[20px]' />
                     </div>
                     <div className=' aspect-square w-1/4'>
@@ -45,7 +45,7 @@ const StudentProfile = () => {
                     </div>
                 </div>
                 {/**Tasks */}
-                <div className='mt-2 px-2 flex w-full'>
+                <div className='mt-2 px-4 flex w-full'>
                     <div className='flex flex-col w-full'>
                         <div className='flex w-full justify-between items-center'>
                             <h1 className=' font-bold text-lg tracking-wide'>Tasks</h1>
