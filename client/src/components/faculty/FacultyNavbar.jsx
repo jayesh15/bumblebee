@@ -80,7 +80,7 @@ const FacultyNavbar = () => {
 
                 {/**Options */}
                 <div onClick={handleClick} className={`fixed ${active ? " opacity-100 right-0" : " opacity-0 -right-[100%]"} top-0  bg-black/40 w-full h-full`} />
-                <div className={`fixed ${active ? "right-0" : " -right-[100%]"} top-0 bg-secondary w-[80%] sm:w-[60%] h-full`} >
+                <div className={`fixed ${active ? "right-0" : " -right-[100%]"} top-0 bg-secondary w-[80%] sm:w-[60%] h-full ease-in-out duration-500 transition-all`} >
                     <div className="flex flex-col justify-between w-full h-full">
                         <div className='p-4 flex w-full justify-center items-center min-h-16 h-16 border-b-[1px]'>
                             <h1 className='font-bold text-white text-lg tracking-wide'>Bumblebee</h1>
