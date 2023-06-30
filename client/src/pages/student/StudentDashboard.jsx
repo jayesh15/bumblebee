@@ -2,7 +2,7 @@ const StudentDashboard = () => {
   return (
     <div className="p-4 h-full flex flex-col items-center w-full">
       {/**OverView */}
-      <div className="flex w-full h-fit bg-blue-200 rounded-lg p-4">
+      <div className="flex w-full h-fit bg-gradient-to-br from-sky-200 to-blue-400 rounded-lg p-4">
         <div className="w-full flex gap-2">
           <div className=" w-full sm:w-[60%] flex gap-4 items-center justify-center">
             <div className="flex flex-col items-start p-2 gap-4">
