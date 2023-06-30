@@ -64,7 +64,7 @@ const StudentSidebar = () => {
   
   
   return (
-    <div className="w-fit flex bg-white border-r-[1px] h-full">
+    <div className="w-[220px] flex bg-white border-r-[1px] h-full">
       <div className="flex flex-col justify-start w-full h-full">
         <div className='mt-1 p-4 flex w-full justify-center items-center border-b-[1px] h-fit'>
           <h1 className='font-bold text-lg tracking-wide'>Bumblebee</h1>
