@@ -32,7 +32,7 @@ const Login = () => {
       if(role === 'student'){
         navigate('/student')
       }else{
-        navigate('/teacher')
+        navigate('/faculty')
       }
 
 
