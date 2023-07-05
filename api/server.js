@@ -1,7 +1,22 @@
 import cookieParser from 'cookie-parser'
 import express from 'express'
+import dotenv from 'dotenv'
+
 import authRoute from "./routes/auth.route.js";
+import mongoose from 'mongoose';
 const app = express()
+dotenv.config()
+mongoose.set('strictQuery',true)
+
+const connect = async() =>{
+    try{
+        await mongoose.connect(process.env.MONGO)
+        console.log("Connected to MongoDB")
+    
+    }catch(err){
+        console.log(err)
+    }
+}
 
 app.use(express.json())
 app.use(cookieParser())
@@ -15,6 +30,9 @@ app.use((err,req,res,next)=>{
     return res.status(errStatus).send(errMessage)
 })
 
-app.listen(8800,()=>{
-    console.log("Backend is Running")
+
+const port = process.env.PORT || 8800
+app.listen(port,()=>{
+    connect()
+    console.log(`Backend is Running at ${port}`)
 })
