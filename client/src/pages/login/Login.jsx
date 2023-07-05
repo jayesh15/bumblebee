@@ -1,11 +1,13 @@
 import { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
+import newRequest from "../../utils/newRequest"
 const Login = () => {
   const [isEmail, setIsEmail] = useState(false)
   const [username, setUsername] = useState("")
   const [email, setEmail] = useState("")
   const [password, setPassWord] = useState("")
   const [role, setRole] = useState("student")
+  const [err, setErr] = useState(null)
   console.log(role)
   const [selectType, setSelectType] = useState('usernameT')
 
@@ -17,17 +19,29 @@ const Login = () => {
 
   const navigate = useNavigate()
 
-  const handleSubmit = (e) => {
+  const handleLogin = async(e) => {
     e.preventDefault()
-    if (role === "student"){
-      navigate("/student")
-    }else{
-      navigate("/faculty")
+    
+    try {
+      const res = await newRequest.post("auth/login", {
+        username,
+        password
+
+      })
+      localStorage.setItem("currentUser", JSON.stringify(res.data))
+      navigate('/')
+
+
+    } catch (err) {
+      setErr(err.response.data)
+      console.log(err)
+
+
     }
   }
   return (
     <div className=" flex w-full p-6 min-h-[500px] h-auto justify-center items-center">
-      <form onSubmit={handleSubmit} className="flex py-4 px-6 lg:px-8 max-w-[400px] w-full h-fit rounded-lg border-[1px] border-gray-300 shadow-xl flex-col gap-2 justify-center items-center">
+      <form onSubmit={handleLogin} className="flex py-4 px-6 lg:px-8 max-w-[400px] w-full h-fit rounded-lg border-[1px] border-gray-300 shadow-xl flex-col gap-2 justify-center items-center">
         <div>
           <h1 className=" text-xl lg:text-2xl font-bold">Login into your account</h1>
         </div>
@@ -42,7 +56,7 @@ const Login = () => {
         </div>
         <div className="mt-6 flex gap-2 w-full items-center">
           <h1>Role</h1>
-          <select onChange={(e)=>setRole(e.target.value)} className=" cursor-pointer border-[1px] border-gray-300 rounded-md w-full p-2" name="role" id="role">
+          <select onChange={(e) => setRole(e.target.value)} className=" cursor-pointer border-[1px] border-gray-300 rounded-md w-full p-2" name="role" id="role">
             <option value="student">Student</option>
             <option value="teacher">Teacher</option>
           </select>
@@ -73,7 +87,10 @@ const Login = () => {
         <div className="mt-2 w-full">
           <button className=" bg-blue-500 w-full py-2 rounded-md text-white hover:opacity-70 active:opacity-25 transition-all duration-100 ease-in-out" type="submit">Login</button>
         </div>
-       
+        <div>
+          <p className=" text-red-500 font-semibold">{err && err}</p>
+        </div>
+
         <div>
           <Link to='/register'>
             <h1 className=" text-blue-500">Create an Account?</h1>
