@@ -3,7 +3,8 @@ import { AiOutlineFileDone, AiOutlineTable } from 'react-icons/ai'
 import { MdOutlineDashboard, MdOutlineEvent, MdSettings, MdLogout } from 'react-icons/md'
 import { LiaUserCheckSolid } from 'react-icons/lia'
 import { SlCalender } from 'react-icons/sl'
-import { Link, useLocation } from "react-router-dom"
+import { Link, useLocation, useNavigate } from "react-router-dom"
+import newRequest from "../../utils/newRequest"
 
 
 
@@ -61,8 +62,19 @@ const links = [
 
 const StudentSidebar = () => {
   const location = useLocation()
-  
-  
+  const navigate = useNavigate()
+
+  const handleLogout = async () => {
+    try {
+      await newRequest.post('auth/logout')
+      localStorage.setItem('currentUser', null)
+      navigate('/')
+      window.location.reload(true)
+    } catch (error) {
+      alert(error)
+    }
+  }
+
   return (
     <div className="w-[220px] flex bg-white border-r-[1px] h-full">
       <div className="flex flex-col justify-start w-full h-full">
@@ -76,7 +88,7 @@ const StudentSidebar = () => {
               links.map((link) => (
                 <Link key={link.id} to={`${link.path}`}>
 
-                  <div className={` ${location.pathname === link.path ? "bg-sky-100 text-blue-600": "text-gray-400"} hover:bg-slate-100 hover:text-gray-600 p-2 flex w-full justify-start rounded-md  gap-4 ease-in-out duration-150 transition-all`}>
+                  <div className={` ${location.pathname === link.path ? "bg-sky-100 text-blue-600" : "text-gray-400"} hover:bg-slate-100 hover:text-gray-600 p-2 flex w-full justify-start rounded-md  gap-4 ease-in-out duration-150 transition-all`}>
                     {link.icon}
 
                     <span className="  whitespace-nowrap font-medium tracking-wide ">{link.name}</span>
@@ -89,17 +101,15 @@ const StudentSidebar = () => {
           </div>
           {/**Settings */}
           <div className={`flex w-full ${open ? " " : "items-center"}  flex-col gap-2 ease-in-out duration-200 transition-all`}>
-            <Link to="/">
-              <div className="p-2 flex w-full justify-start text-gray-400 hover:bg-slate-100 hover:text-gray-600 rounded-md  gap-4 ease-in-out duration-150 transition-all">
-                <MdLogout className='text-[25px]' />
+            <div onClick={handleLogout} className=" cursor-pointer p-2 flex w-full justify-start text-gray-400 hover:bg-slate-100 hover:text-gray-600 rounded-md  gap-4 ease-in-out duration-150 transition-all">
+              <MdLogout className='text-[25px]' />
 
-                <span className=" font-medium tracking-wide ">Logout</span>
+              <span className=" font-medium tracking-wide ">Logout</span>
 
-              </div>
-            </Link>
+            </div>
           </div>
         </div>
-        
+
 
       </div>
 

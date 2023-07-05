@@ -3,7 +3,8 @@ import { BiTask } from 'react-icons/bi'
 import { MdLogout, MdOutlineDashboard, MdSettings } from 'react-icons/md'
 import { LiaUserCheckSolid } from 'react-icons/lia'
 import { SlCalender } from 'react-icons/sl'
-import { Link, useLocation } from "react-router-dom"
+import { Link, useLocation, useNavigate } from "react-router-dom"
+import newRequest from "../../utils/newRequest"
 
 
 const links = [
@@ -41,6 +42,7 @@ const links = [
 ]
 const FacultyNavbar = () => {
     const location = useLocation()
+    const navigate = useNavigate()
     const [active, setActive] = useState(false)
     const handleActive = () => {
         setActive(prev => !prev)
@@ -48,6 +50,17 @@ const FacultyNavbar = () => {
     const handleClick = () => {
         setActive(false)
     }
+    const handleLogout = async () => {
+        try {
+          await newRequest.post('auth/logout')
+          localStorage.setItem('currentUser', null)
+          navigate('/')
+          window.location.reload(true)
+        } catch (error) {
+          alert(error)
+        }
+      }
+    
     return (
         <div className="z-[100] top-0 left-0 h-16 w-full">
             <div className=" flex px-2 h-full w-full items-center justify-between  bg-white border-b-[1px] border-gray-200">
@@ -102,12 +115,12 @@ const FacultyNavbar = () => {
                             </div>
                             {/**Settings */}
                             <div className="flex w-full flex-col gap-2">
-                                <Link onClick={handleClick} to="/">
-                                    <div className="group hover:bg-sky-100 flex p-2 sm:px-12 text-gray-200 hover:text-blue-900 items-center gap-4 rounded-md ease-in-out duration-150 transition-all">
+                                
+                                    <div onClick={handleLogout} className=" cursor-pointer group hover:bg-sky-100 flex p-2 sm:px-12 text-gray-200 hover:text-blue-900 items-center gap-4 rounded-md ease-in-out duration-150 transition-all">
                                         <MdLogout className=" text-[22px]" />
                                         <span className=" font-medium tracking-wide text-lg">Logout</span>
                                     </div>
-                                </Link>
+                               
                             </div>
                         </div>
 

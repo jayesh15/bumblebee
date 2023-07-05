@@ -28,6 +28,7 @@ const Tasks = [
     }
 ]
 const FacultyProfile = () => {
+    const user = JSON.parse(localStorage.getItem('currentUser'))
     return (
         <div className="flex w-[300px] h-full border-l-[1px] bg-white">
             <div className="flex flex-col w-full h-full justify-start">
@@ -40,7 +41,7 @@ const FacultyProfile = () => {
                         <img className='border-[1px] border-gray-400 w-full h-full rounded-full object-cover object-center' src="/assets/teacher.png" alt="" />
                     </div>
                     <div className='flex flex-col items-start w-full'>
-                        <h1 className=' font-bold'>Teacher </h1>
+                        <h1 className=' font-bold'>{user.username} </h1>
                         <p className=' font-semibold text-gray-600'>Class B</p>
                     </div>
                 </div>
