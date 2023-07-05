@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
+import { BrowserRouter as Router, Routes, Route, Navigate, Outlet } from "react-router-dom"
 import Home from "./pages/home/Home"
 import Register from "./pages/register/Register"
 import Login from "./pages/login/Login"
@@ -19,6 +19,24 @@ import StudentSettings from "./pages/student/StudentSettings"
 import StudentDashboard from "./pages/student/StudentDashboard"
 import FacultySettings from "./pages/faculty/FacultySettings"
 import Content from "./pages/home/Content"
+
+const useAuth = (allowedRoles) => {
+  const user = JSON.parse(localStorage.getItem('currentUser'));
+
+  // Check if the user exists and has a valid role
+  if (user && user.role && allowedRoles.includes(user.role)) {
+    return true;
+  }
+
+  return false;
+};
+
+const ProtectedRoutes = ({ allowedRoles }) => {
+  const auth = useAuth(allowedRoles);
+
+  return auth ? <Outlet /> : <Navigate to="/login" />;
+};
+
 function App() {
 
 
@@ -28,27 +46,31 @@ function App() {
         <div className=" flex w-full h-screen">
           <Routes>
             <Route exact path="/" element={<Home />}>
-            <Route path="" element={<Content />} />
+              <Route path="" element={<Content />} />
               <Route path="login" element={<Login />} />
               <Route path="register" element={<Register />} />
             </Route>
-            <Route exact path="/faculty" element={<Faculty />}>
-              <Route path="" element={<FacultyDashboard />} />
-              <Route path="managetasks" element={<ManageTasks />} />
-              <Route path="markattendance" element={<MarkAttendance />} />
-              <Route path="classes" element={<Classes />} />
-              <Route path="settings" element={<FacultySettings />} />
+            <Route element={<ProtectedRoutes allowedRoles={'teacher'} />}>
+              <Route exact path="/faculty" element={<Faculty />}>
+                <Route path="" element={<FacultyDashboard />} />
+                <Route path="managetasks" element={<ManageTasks />} />
+                <Route path="markattendance" element={<MarkAttendance />} />
+                <Route path="classes" element={<Classes />} />
+                <Route path="settings" element={<FacultySettings />} />
+              </Route>
             </Route>
-            <Route exact path="/student" element={<Student />}>
-              <Route path="" element={<StudentDashboard />} />
-              <Route path="events" element={<Events />} />
-              <Route path="tasks" element={<Tasks />} />
-              <Route path="reports" element={<Reports />} />
-              <Route path="attendance" element={<Attendance />} />
-              <Route path="calender" element={<Calender />} />
-              <Route path="timetable" element={<Timetable />} />
-              <Route path="settings" element={<StudentSettings />} />
+            <Route element={<ProtectedRoutes allowedRoles={'student'} />}>
+              <Route exact path="/student" element={<Student />}>
+                <Route path="" element={<StudentDashboard />} />
+                <Route path="events" element={<Events />} />
+                <Route path="tasks" element={<Tasks />} />
+                <Route path="reports" element={<Reports />} />
+                <Route path="attendance" element={<Attendance />} />
+                <Route path="calender" element={<Calender />} />
+                <Route path="timetable" element={<Timetable />} />
+                <Route path="settings" element={<StudentSettings />} />
 
+              </Route>
             </Route>
             <Route path="*" element={<NotFound />} />
           </Routes>
