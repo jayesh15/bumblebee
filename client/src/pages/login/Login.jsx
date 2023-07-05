@@ -8,7 +8,6 @@ const Login = () => {
   const [password, setPassWord] = useState("")
   const [role, setRole] = useState("student")
   const [err, setErr] = useState(null)
-  console.log(role)
   const [selectType, setSelectType] = useState('usernameT')
 
   const handleType = (typeT) => {
@@ -25,6 +24,7 @@ const Login = () => {
     try {
       const res = await newRequest.post("auth/login", {
         username,
+        role,
         password
 
       })
