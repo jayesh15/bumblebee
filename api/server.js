@@ -1,6 +1,7 @@
 import cookieParser from 'cookie-parser'
 import express from 'express'
 import dotenv from 'dotenv'
+import cors from 'cors'
 
 import authRoute from "./routes/auth.route.js";
 import mongoose from 'mongoose';
@@ -17,7 +18,7 @@ const connect = async() =>{
         console.log(err)
     }
 }
-
+app.use(cors({ origin: ["http://localhost:5173"], credentials: true }));
 app.use(express.json())
 app.use(cookieParser())
 
