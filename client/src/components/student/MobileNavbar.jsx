@@ -58,6 +58,9 @@ const links = [
     },
 ]
 const MobileNavbar = () => {
+
+    const user = JSON.parse(localStorage.getItem('currentUser'))
+
     const location = useLocation()
     const navigate = useNavigate()
     const [active, setActive] = useState(false)
@@ -83,7 +86,7 @@ const MobileNavbar = () => {
             <div className=" flex px-2 h-full w-full items-center justify-between  bg-white border-b-[1px] border-gray-200">
                 {/**Profile Img */}
                 <div>
-                    <img className="w-12 h-12 rounded-full object-cover object-center" src="/assets/noProfile.png" alt="" />
+                    <img className="w-12 h-12 rounded-full object-cover object-center" src={user?.img || "/assets/noProfile.png"} alt="" />
                 </div>
                 {/**Location */}
                 <div>

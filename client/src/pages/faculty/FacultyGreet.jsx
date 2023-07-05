@@ -1,9 +1,10 @@
 import {BiSearch} from 'react-icons/bi'
 const FacultyGreet = () => {
+  const user = JSON.parse(localStorage.getItem('currentUser'))
   return (
     <div className="flex p-2 justify-between w-full items-center h-16 bg-white border-b-[1px] ">
         <div className='flex w-full'>
-            <h1 className=" text-lg font-semibold tracking-wide">Welcome Teacher</h1>
+            <h1 className=" text-lg font-semibold tracking-wide">Welcome {user.username}</h1>
         </div>
         <div className='flex w-full gap-2 justify-end items-center p-2'>
             <BiSearch className=' text-gray-500 text-[20px]' />
