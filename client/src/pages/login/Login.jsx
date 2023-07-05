@@ -29,7 +29,11 @@ const Login = () => {
 
       })
       localStorage.setItem("currentUser", JSON.stringify(res.data))
-      navigate('/')
+      if(role === 'student'){
+        navigate('/student')
+      }else{
+        navigate('/teacher')
+      }
 
 
     } catch (err) {
