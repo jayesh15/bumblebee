@@ -19,6 +19,10 @@ import StudentSettings from "./pages/student/StudentSettings"
 import StudentDashboard from "./pages/student/StudentDashboard"
 import FacultySettings from "./pages/faculty/FacultySettings"
 import Content from "./pages/home/Content"
+import {
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query'
 
 const useAuth = (allowedRoles) => {
   const user = JSON.parse(localStorage.getItem('currentUser'));
@@ -38,42 +42,44 @@ const ProtectedRoutes = ({ allowedRoles }) => {
 };
 
 function App() {
-
+  const queryClient = new QueryClient()
 
   return (
     <>
       <Router>
         <div className=" flex w-full h-screen">
-          <Routes>
-            <Route exact path="/" element={<Home />}>
-              <Route path="" element={<Content />} />
-              <Route path="login" element={<Login />} />
-              <Route path="register" element={<Register />} />
-            </Route>
-            <Route element={<ProtectedRoutes allowedRoles={'teacher'} />}>
-              <Route exact path="/faculty" element={<Faculty />}>
-                <Route path="" element={<FacultyDashboard />} />
-                <Route path="managetasks" element={<ManageTasks />} />
-                <Route path="markattendance" element={<MarkAttendance />} />
-                <Route path="classes" element={<Classes />} />
-                <Route path="settings" element={<FacultySettings />} />
+          <QueryClientProvider client={queryClient}>
+            <Routes>
+              <Route exact path="/" element={<Home />}>
+                <Route path="" element={<Content />} />
+                <Route path="login" element={<Login />} />
+                <Route path="register" element={<Register />} />
               </Route>
-            </Route>
-            <Route element={<ProtectedRoutes allowedRoles={'student'} />}>
-              <Route exact path="/student" element={<Student />}>
-                <Route path="" element={<StudentDashboard />} />
-                <Route path="events" element={<Events />} />
-                <Route path="tasks" element={<Tasks />} />
-                <Route path="reports" element={<Reports />} />
-                <Route path="attendance" element={<Attendance />} />
-                <Route path="calender" element={<Calender />} />
-                <Route path="timetable" element={<Timetable />} />
-                <Route path="settings" element={<StudentSettings />} />
+              <Route element={<ProtectedRoutes allowedRoles={'teacher'} />}>
+                <Route exact path="/faculty" element={<Faculty />}>
+                  <Route path="" element={<FacultyDashboard />} />
+                  <Route path="managetasks" element={<ManageTasks />} />
+                  <Route path="markattendance" element={<MarkAttendance />} />
+                  <Route path="classes" element={<Classes />} />
+                  <Route path="settings" element={<FacultySettings />} />
+                </Route>
+              </Route>
+              <Route element={<ProtectedRoutes allowedRoles={'student'} />}>
+                <Route exact path="/student" element={<Student />}>
+                  <Route path="" element={<StudentDashboard />} />
+                  <Route path="events" element={<Events />} />
+                  <Route path="tasks" element={<Tasks />} />
+                  <Route path="reports" element={<Reports />} />
+                  <Route path="attendance" element={<Attendance />} />
+                  <Route path="calender" element={<Calender />} />
+                  <Route path="timetable" element={<Timetable />} />
+                  <Route path="settings" element={<StudentSettings />} />
 
+                </Route>
               </Route>
-            </Route>
-            <Route path="*" element={<NotFound />} />
-          </Routes>
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </QueryClientProvider>
         </div>
 
       </Router>
