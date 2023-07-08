@@ -1,6 +1,5 @@
 import { BrowserRouter as Router, Routes, Route, Navigate, Outlet } from "react-router-dom"
 import Home from "./pages/home/Home"
-import Register from "./pages/register/Register"
 import Login from "./pages/login/Login"
 import Faculty from "./pages/faculty/Faculty"
 import Student from "./pages/student/Student"
@@ -54,7 +53,7 @@ function App() {
               <Route exact path="/" element={<Home />}>
                 <Route path="" element={<Content />} />
                 <Route path="login" element={<Login />} />
-                <Route path="register" element={<Register />} />
+                
               </Route>
               <Route element={<ProtectedRoutes allowedRoles={'teacher'} />}>
                 <Route exact path="/faculty" element={<Faculty />}>
