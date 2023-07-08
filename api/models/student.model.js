@@ -1,11 +1,11 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 const { Schema } = mongoose;
 
 const studentSchema = new Schema(
   {
     studentId: {
-      type: String,
-      required: true,
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
     },
     rollNo: {
       type: String,
@@ -49,4 +49,4 @@ const studentSchema = new Schema(
   }
 );
 
-export default mongoose.model('Student', studentSchema);
+export default mongoose.model("Student", studentSchema);
