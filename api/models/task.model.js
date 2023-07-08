@@ -25,6 +25,14 @@ const taskSchema = new Schema(
       type: Date,
       required: true,
     },
+    isPending:{
+      type: Boolean,
+      default: true,
+    },
+    isCompleted:{
+      type: Boolean,
+      default: false,
+    }
   },
   {
     timestamps: true,
