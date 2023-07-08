@@ -16,26 +16,36 @@ const ManageTasks = () => {
     setOpenTask((prev) => !prev)
     setSelectedStudentId(studentId);
   }
-  const handleClose = () =>{
+  const handleClose = () => {
     setOpenTask(false)
   }
   return (
-    <div className="p-4 flex flex-col border-2 items-center justify-start w-full h-full">
+    <div className="p-4 flex flex-col items-center justify-start w-full h-full">
       <div className="flex flex-col gap-4 items-center w-full h-auto">
         <h1 className=" font-semibold text-lg">Assign Tasks to Students</h1>
-        <div className="flex flex-col gap-2 items-center w-full">
+        <div className="flex flex-col max-h-[500px] overflow-y-auto gap-2 items-center w-full">
           {
             isLoading ? "Loading Students" :
               isError ? "Something Went Wrong" :
                 (
                   data.map((student) => (
 
-                    <div key={student._id} className="flex w-full justify-between items-center p-4 border-[1px] border-gray-300 rounded-lg">
-                      <div className="flex gap-4 items-center">
-                        <img className="w-14 h-14 object-cover object-center" src={student?.img || "/assets/noProfile.png"} alt="Student" />
-                        <div className="flex flex-col overflow-x-auto">
-                          <h1 className=" font-semibold">{student.studentId.username}</h1>
-                          <p className=" text-sm">{student.studentId.email}</p>
+                    <div key={student._id} className="flex w-full max-w-[600px] justify-between items-center p-4 border-[1px] border-gray-300 rounded-lg">
+                      <div className=" flex items-center gap-4">
+                        <div className="flex gap-4 items-center">
+                          <img className="w-14 h-14 object-cover object-center" src={student?.img || "/assets/noProfile.png"} alt="Student" />
+                          {/* <div className="flex flex-col overflow-x-auto">
+                            <h1 className=" font-semibold">{student.studentId.username}</h1>
+                            <p className=" text-sm">{student.studentId.email}</p>
+                          </div> */}
+                        </div>
+                        <div className="flex gap-4 items-center">
+
+                          <div className="flex flex-col w-fit overflow-x-auto">
+                            <h1 className=" font-semibold">{student.firstName}, {student.surname}</h1>
+                            <p className=" text-sm">Roll No: {student.rollNo}</p>
+                            <p className=" text-sm">Class: {student.class}</p>
+                          </div>
                         </div>
                       </div>
                       <div>
@@ -46,16 +56,17 @@ const ManageTasks = () => {
                   ))
                 )
           }
+          
         </div>
       </div>
       {
         openTask && (
-          <div className="z-[200] fixed  flex justify-center items-start p-4 top-0 left-0 bg-black/30 h-full w-full">
-            <div onClick={handleClose} className="z-[201] cursor-pointer absolute top-2 md:top-5 right-2 md:right-10 p-4 rounded-full bg-white text-black">
+          <div className="z-[200] fixed  flex justify-center items-center p-4 top-0 left-0 bg-black/30 h-full w-full">
+            <div onClick={handleClose} className="z-[201] cursor-pointer absolute top-2 md:top-5 right-2 md:right-10 p-4 border-[1px] rounded-full bg-white text-black">
               <AiOutlineClose />
             </div>
-            <div className=" relative  max-w-[500px] w-full h-[600px] overflow-y-auto bg-white">
-              <TaskForm studId={selectedStudentId}/>
+            <div className=" relative py-10 rounded-lg  max-w-[500px] w-full h-fit max-h-[600px] overflow-y-auto bg-white">
+              <TaskForm studId={selectedStudentId} />
             </div>
           </div>
         )
