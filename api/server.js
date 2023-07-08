@@ -5,6 +5,8 @@ import cors from 'cors'
 
 import authRoute from "./routes/auth.route.js";
 import studentRoute from "./routes/student.route.js";
+import taskRoute from "./routes/task.route.js";
+
 import mongoose from 'mongoose';
 const app = express()
 dotenv.config()
@@ -26,6 +28,7 @@ app.use(cookieParser())
 
 app.use('/api/auth',authRoute)
 app.use('/api/students',studentRoute)
+app.use('/api/tasks/',taskRoute)
 
 app.use((err,req,res,next)=>{
     const errStatus = err.status || 500
