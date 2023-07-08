@@ -7,16 +7,25 @@ import createError from "../utils/createError.js";
 export const register = async (req, res, next) => {
   try {
     await mongoose.connect(process.env.MONGO);
-    const { role } = req.body;
+    
+    const { role, username, email, password, firstname, surname, mothername, fathername, rollno, classAssigned } = req.body
     const hash = bcrypt.hashSync(req.body.password, 5);
     const newUser = User({
-      ...req.body,
+      username:username,
+      email: email,
+      role: role,
       password: hash,
     });
 
     if (role === "student") {
       const student = new Student({
         studentId: newUser._id,
+        firstName: firstname,
+        surname: surname,
+        motherName: mothername,
+        fatherName: fathername,
+        rollNo: rollno,
+        class: classAssigned
       });
 
       try {

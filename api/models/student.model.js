@@ -9,27 +9,27 @@ const studentSchema = new Schema(
     },
     rollNo: {
       type: String,
-      required: false,
+      required: true,
     },
     class: {
       type: String,
-      required: false,
+      required: true,
     },
     firstName: {
       type: String,
-      required: false,
+      required: true,
     },
     motherName: {
       type: String,
-      required: false,
+      required: true,
     },
     fatherName: {
       type: String,
-      required: false,
+      required: true,
     },
     surname: {
       type: String,
-      required: false,
+      required: true,
     },
     address: {
       type: String,
