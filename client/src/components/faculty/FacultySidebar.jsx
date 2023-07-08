@@ -1,5 +1,5 @@
 import { BiTask } from 'react-icons/bi'
-import { MdLogout, MdOutlineDashboard, MdSettings } from 'react-icons/md'
+import { MdLogout, MdOutlineDashboard, MdSettings,MdOutlinePersonAddAlt } from 'react-icons/md'
 import { LiaUserCheckSolid } from 'react-icons/lia'
 import { SlCalender } from 'react-icons/sl'
 import { Link, useLocation, useNavigate } from "react-router-dom"
@@ -35,6 +35,12 @@ const links = [
   },
   {
     id: 5,
+    path: "/faculty/addStudent",
+    name: "Add Student",
+    icon: <MdOutlinePersonAddAlt className="text-[25px]" />
+  },
+  {
+    id: 6,
     path: "/faculty/settings",
     name: "Settings",
     icon: <MdSettings className=' text-[25px]' />

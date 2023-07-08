@@ -23,6 +23,7 @@ import {
   QueryClient,
   QueryClientProvider,
 } from '@tanstack/react-query'
+import AddStudent from "./pages/faculty/AddStudent"
 
 const useAuth = (allowedRoles) => {
   const user = JSON.parse(localStorage.getItem('currentUser'));
@@ -58,6 +59,7 @@ function App() {
               <Route element={<ProtectedRoutes allowedRoles={'teacher'} />}>
                 <Route exact path="/faculty" element={<Faculty />}>
                   <Route path="" element={<FacultyDashboard />} />
+                  <Route path="addStudent" element={<AddStudent />} />
                   <Route path="managetasks" element={<ManageTasks />} />
                   <Route path="markattendance" element={<MarkAttendance />} />
                   <Route path="classes" element={<Classes />} />
