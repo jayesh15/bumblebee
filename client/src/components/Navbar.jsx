@@ -61,7 +61,7 @@ const Navbar = () => {
                   <span onClick={handleOptions} className=" cursor-pointer">Benefits</span>
                   <span onClick={handleOptions} className=" cursor-pointer">Teachers</span>
                   <Link onClick={handleOptions} to="/login">
-                    <button className="whitespace-nowrap border-[1px] border-blue-600 px-4 py-2 rounded-md font-semibold bg-white text-blue-600">Login in</button>
+                    <button className="whitespace-nowrap border-[1px] border-blue-600 px-4 py-2 rounded-md font-semibold bg-white text-blue-600">Log in</button>
                   </Link>
                   
 
