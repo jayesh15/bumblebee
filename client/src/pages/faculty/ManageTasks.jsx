@@ -50,11 +50,11 @@ const ManageTasks = () => {
       </div>
       {
         openTask && (
-          <div onClick={handleClose} className="z-[200] fixed p-4 flex justify-center items-center top-0 left-0 bg-black/30 h-full w-full">
-            <div onClick={handleClose} className=" cursor-pointer absolute top-2 md:top-5 right-2 md:right-10 p-4 rounded-full bg-white text-black">
+          <div className="z-[200] fixed  flex justify-center items-start p-4 top-0 left-0 bg-black/30 h-full w-full">
+            <div onClick={handleClose} className="z-[201] cursor-pointer absolute top-2 md:top-5 right-2 md:right-10 p-4 rounded-full bg-white text-black">
               <AiOutlineClose />
             </div>
-            <div className=" relative  max-w-[500px] w-full h-[300px] bg-white">
+            <div className=" relative  max-w-[500px] w-full h-[600px] overflow-y-auto bg-white">
               <TaskForm studId={selectedStudentId}/>
             </div>
           </div>

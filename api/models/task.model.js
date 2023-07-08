@@ -20,10 +20,7 @@ const taskSchema = new Schema(
       type: String,
       required: true,
     },
-    assignedTo: {
-      type: Schema.Types.ObjectId,
-      ref: "Student",
-    },
+    
     deadline: {
       type: Date,
       required: true,
