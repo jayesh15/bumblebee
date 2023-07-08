@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query"
 import newRequest from "../../utils/newRequest"
 import { AiOutlineClose } from 'react-icons/ai'
+import { HiDotsVertical } from 'react-icons/hi'
 import { useState } from "react"
 import TaskForm from "../../components/faculty/TaskForm"
 
@@ -9,7 +10,12 @@ const ManageTasks = () => {
     queryKey: ['students'],
     queryFn: () => newRequest.get('students').then((res) => res.data)
   })
-  console.log(data)
+  const { isLoading: isloadingTasks, isError: isErrorTasks, data: tasks } = useQuery({
+    queryKey: ['tasks'],
+    queryFn: () => newRequest.get('tasks').then((res) => res.data)
+  })
+  console.log(tasks)
+
   const [openTask, setOpenTask] = useState(false)
   const [selectedStudentId, setSelectedStudentId] = useState(null);
   const handleTask = (studentId) => {
@@ -20,7 +26,7 @@ const ManageTasks = () => {
     setOpenTask(false)
   }
   return (
-    <div className="p-4 flex flex-col items-center justify-start w-full h-full">
+    <div className="p-4 pb-24 flex flex-col items-center justify-start w-full h-full">
       <div className="flex flex-col gap-4 items-center w-full h-auto">
         <h1 className=" font-semibold text-lg">Assign Tasks to Students</h1>
         <div className="flex flex-col max-h-[500px] overflow-y-auto gap-2 items-center w-full">
@@ -56,7 +62,51 @@ const ManageTasks = () => {
                   ))
                 )
           }
-          
+
+        </div>
+        {/**Manage Tasks */}
+        <div className=" mt-24 pb-16 flex flex-col gap-4 items-center w-full h-auto">
+          <h1 className=" font-semibold text-lg">Manage Tasks</h1>
+          <div className="flex flex-col max-h-[500px] overflow-y-auto gap-2 items-center w-full">
+            {
+              isloadingTasks ? "Loading Students" :
+                isErrorTasks ? "Something Went Wrong" :
+                  (
+                    tasks.map((task) => (
+
+                      <div key={task._id} className="flex w-full max-w-[600px] justify-between items-center p-4 border-[1px] border-gray-300 rounded-lg">
+                        <div className=" flex items-center gap-4">
+
+                          <div className="flex gap-4 items-center">
+
+                            <div className="flex flex-col w-fit overflow-x-auto">
+                              <div className=" flex gap-2">
+                                <h1 className=" font-semibold">{task.title}</h1>
+                                <p className="">Assigned: <span className=" text-sm">{task.createdAt.slice(0, 10)}</span></p>
+                              </div>
+                              <div className=" flex gap-2">
+                                <h1 className=" font-semibold">To: {task.assignedTo.firstName} ({task.assignedTo.rollNo})</h1>
+                                <p>Class: {task.assignedTo.class}</p>
+                              </div>
+                              <div className=" flex gap-2">
+                                <p className="">Assigned: <span className=" text-sm">{task.deadline.slice(0, 10)}</span></p>
+
+                              </div>
+
+                            </div>
+                          </div>
+                        </div>
+                        <div className=" relative">
+
+                          <HiDotsVertical className=" text-[20px] cursor-pointer" />
+                        </div>
+                      </div>
+
+                    ))
+                  )
+            }
+
+          </div>
         </div>
       </div>
       {

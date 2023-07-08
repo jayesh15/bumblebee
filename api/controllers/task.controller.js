@@ -13,7 +13,9 @@ export const addTask = async (req, res, next) => {
       return next(createError(403, 'Only teachers can assign tasks.'));
     }
     const isStudent = await Student.findById(assignedTo);
-    if (!isStudent) return  next(createError(403, 'Student not found'));
+    if (!isStudent){
+      return  next(createError(403, 'Student not found'));
+    }
 
     const newTask = new Task({
       title,
@@ -30,3 +32,15 @@ export const addTask = async (req, res, next) => {
     next(error);
   }
 };
+
+export const getTasks = async (req, res, next) =>{
+  try {
+    
+    const tasks = await Task.find().populate("assignedTo")
+    res.status(200).send(tasks)
+    
+  } catch (error) {
+    next(error)
+    
+  }
+}
