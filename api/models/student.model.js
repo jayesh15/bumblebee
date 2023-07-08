@@ -3,38 +3,41 @@ const { Schema } = mongoose;
 
 const studentSchema = new Schema(
   {
-    user: {
-      type: Schema.Types.ObjectId,
-      ref: 'User',
+    studentId: {
+      type: String,
       required: true,
     },
     rollNo: {
       type: String,
-      required: true,
+      required: false,
+    },
+    class: {
+      type: String,
+      required: false,
     },
     firstName: {
       type: String,
-      required: true,
+      required: false,
     },
     motherName: {
       type: String,
-      required: true,
+      required: false,
     },
     fatherName: {
       type: String,
-      required: true,
+      required: false,
     },
     surname: {
       type: String,
-      required: true,
+      required: false,
     },
     address: {
       type: String,
-      required: true,
+      required: false,
     },
     contactNumber1: {
       type: String,
-      required: true,
+      required: false,
     },
     contactNumber2: {
       type: String,

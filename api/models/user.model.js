@@ -26,13 +26,7 @@ const userSchema = new Schema(
       enum: ["teacher", "student"],
       required: true,
     },
-    student: {
-      type: Schema.Types.ObjectId,
-      ref: 'Student',
-      required: function () {
-        return this.role === 'student';
-      },
-    },
+    
   },
   {
     timestamps: true,
