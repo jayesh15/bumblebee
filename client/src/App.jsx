@@ -59,7 +59,7 @@ function App() {
                 <Route exact path="/faculty" element={<Faculty />}>
                   <Route path="" element={<FacultyDashboard />} />
                   <Route path="addStudent" element={<AddStudent />} />
-                  <Route path="managetasks" element={<ManageTasks />} />
+                  <Route path="managetasks" element={<ManageTasks />} ></Route>
                   <Route path="markattendance" element={<MarkAttendance />} />
                   <Route path="classes" element={<Classes />} />
                   <Route path="settings" element={<FacultySettings />} />
