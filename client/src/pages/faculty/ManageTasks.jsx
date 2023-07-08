@@ -22,8 +22,8 @@ const ManageTasks = () => {
                         <div className="flex gap-4 items-center">
                           <img className="w-14 h-14 object-cover object-center" src={student?.img || "/assets/noProfile.png"} alt="Student" />
                           <div className="flex flex-col overflow-x-auto">
-                            <h1 className=" font-semibold">{student.username}</h1>
-                            <p className=" text-sm">{student.email}</p>
+                            <h1 className=" font-semibold">{student.studentId.username}</h1>
+                            <p className=" text-sm">{student.studentId.email}</p>
                           </div>
                         </div>
                       </div>
