@@ -57,7 +57,7 @@ const Tasks = () => {
         <h1 className=" font-bold text-xl tracking-wide">Completed Tasks</h1>
         {
           isloadingTasks ? "Loading tasks..." : isErrorTasks ? "Something went Wrong" : (
-            completedTasks.length == 0 ? "No Tasks Completed" : (
+            completedTasks.length === 0 ? "No Tasks Completed" : (
               completedTasks.map((task) => (
 
                 <div key={task._id} className=" overflow-hidden relative flex flex-col items-center gap-2 w-full px-2 md:px-4 py-4 border-[1px] border-gray-300 rounded-lg">
