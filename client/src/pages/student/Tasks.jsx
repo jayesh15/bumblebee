@@ -1,6 +1,5 @@
 import { useQuery } from "@tanstack/react-query"
 import newRequest from "../../utils/newRequest"
-import { useState } from "react"
 
 const Tasks = () => {
   const user = JSON.parse(localStorage.getItem("currentUser"))
