@@ -10,17 +10,19 @@ const ManageTasks = () => {
     queryKey: ['students'],
     queryFn: () => newRequest.get('students').then((res) => res.data)
   })
+  console.log(data)
   const { isLoading: isloadingTasks, isError: isErrorTasks, data: tasks } = useQuery({
     queryKey: ['tasks'],
     queryFn: () => newRequest.get('tasks').then((res) => res.data)
   })
-  console.log(tasks)
+  
 
   const [openTask, setOpenTask] = useState(false)
   const [selectedStudentId, setSelectedStudentId] = useState(null);
   const handleTask = (studentId) => {
     setOpenTask((prev) => !prev)
     setSelectedStudentId(studentId);
+    
   }
   const handleClose = () => {
     setOpenTask(false)
@@ -55,7 +57,7 @@ const ManageTasks = () => {
                         </div>
                       </div>
                       <div>
-                        <button onClick={() => handleTask(student._id)} className="px-4 py-2 bg-blue-500 text-white font-semibold rounded-md hover:opacity-70 active:opacity-30 duration-150 ease-in-out">Assign Task</button>
+                        <button onClick={() => handleTask(student.studentId._id)} className="px-4 py-2 bg-blue-500 text-white font-semibold rounded-md hover:opacity-70 active:opacity-30 duration-150 ease-in-out">Assign Task</button>
                       </div>
                     </div>
 
@@ -84,10 +86,7 @@ const ManageTasks = () => {
                                 <h1 className=" font-semibold">{task.title}</h1>
                                 <p className="">Assigned: <span className=" text-sm">{task.createdAt.slice(0, 10)}</span></p>
                               </div>
-                              <div className=" flex gap-2">
-                                <h1 className=" font-semibold">To: {task.assignedTo.firstName} ({task.assignedTo.rollNo})</h1>
-                                <p>Class: {task.assignedTo.class}</p>
-                              </div>
+                              
                               <div className=" flex gap-2">
                                 <p className="">Assigned: <span className=" text-sm">{task.deadline.slice(0, 10)}</span></p>
 
