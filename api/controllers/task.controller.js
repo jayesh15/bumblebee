@@ -14,7 +14,7 @@ export const addTask = async (req, res, next) => {
     }
     const isStudent = await Student.findById(assignedTo);
     if (!isStudent){
-      return  next(createError(403, 'Student not found'));
+      return  next(createError(404, 'Student not found'));
     }
 
     const newTask = new Task({
@@ -42,5 +42,22 @@ export const getTasks = async (req, res, next) =>{
   } catch (error) {
     next(error)
     
+  }
+}
+
+export const doneTask = async(req, res, next)=>{
+  try {
+    const task = await Task.findById(req.params.taskId)
+    if(!task){
+      return next(createError(404, 'Task not found'));
+    }
+    task.isCompleted = true;
+    task.isPending = false;
+    await task.save();
+
+    res.status(200).send('Task marked as completed');
+      
+  } catch (error) {
+    next(error)
   }
 }
