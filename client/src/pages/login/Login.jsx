@@ -65,11 +65,7 @@ const Login = () => {
           <p className=" text-red-500 font-semibold">{err && err}</p>
         </div>
 
-        <div>
-          <Link to='/register'>
-            <h1 className=" text-blue-500">Create an Account?</h1>
-          </Link>
-        </div>
+        
 
 
       </form>
