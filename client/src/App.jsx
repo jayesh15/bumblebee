@@ -23,6 +23,7 @@ import {
   QueryClientProvider,
 } from '@tanstack/react-query'
 import AddStudent from "./pages/faculty/AddStudent"
+import ManageReport from "./pages/faculty/ManageReport"
 
 const useAuth = (allowedRoles) => {
   const user = JSON.parse(localStorage.getItem('currentUser'));
@@ -59,7 +60,8 @@ function App() {
                 <Route exact path="/faculty" element={<Faculty />}>
                   <Route path="" element={<FacultyDashboard />} />
                   <Route path="addStudent" element={<AddStudent />} />
-                  <Route path="managetasks" element={<ManageTasks />} ></Route>
+                  <Route path="managetasks" element={<ManageTasks />} />
+                  <Route path="managereports" element={<ManageReport />} />
                   <Route path="markattendance" element={<MarkAttendance />} />
                   <Route path="classes" element={<Classes />} />
                   <Route path="settings" element={<FacultySettings />} />

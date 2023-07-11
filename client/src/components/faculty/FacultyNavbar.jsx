@@ -3,6 +3,7 @@ import { BiTask } from 'react-icons/bi'
 import { MdLogout, MdOutlineDashboard, MdSettings,MdOutlinePersonAddAlt } from 'react-icons/md'
 import { LiaUserCheckSolid } from 'react-icons/lia'
 import { SlCalender } from 'react-icons/sl'
+import {TbFileSettings} from 'react-icons/tb'
 import { Link, useLocation, useNavigate } from "react-router-dom"
 import newRequest from "../../utils/newRequest"
 
@@ -39,9 +40,14 @@ const links = [
         name: "Add Student",
         icon: <MdOutlinePersonAddAlt className="text-[22px]"/>
     },
-    
     {
         id: 6,
+        path: "/faculty/managereports",
+        name: "Reports",
+        icon: <TbFileSettings className="text-[22px]"/>
+    },
+    {
+        id: 7,
         path: "/faculty/settings",
         name: "Settings",
         icon: <MdSettings className=' text-[22px]' />
