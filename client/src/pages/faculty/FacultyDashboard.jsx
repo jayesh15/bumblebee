@@ -46,7 +46,7 @@ const FacultyDashboard = () => {
             <FaChildren className='text-white text-[25px]' />
           </div>
           <div className='flex gap-2 items-baseline '>
-            <p className=" font-medium text-yellow-300 text-lg">No. of Students</p>
+            <p className="hidden sm:block font-medium text-yellow-300 text-lg">No. of Students</p>
             <p className=" font-bold text-yellow-300 text-2xl">
               {
                 isLoading ? "..." :
@@ -61,7 +61,7 @@ const FacultyDashboard = () => {
             <MdAssignment className=' text-white text-[25px]' />
           </div>
           <div className='flex gap-2 items-baseline '>
-            <p className=" font-medium text-yellow-300 text-lg">Tasks Assigned</p>
+            <p className="hidden sm:block font-medium text-yellow-300 text-lg">Tasks Assigned</p>
             <p className=" font-bold text-yellow-300 text-2xl">{taskCounts.total}</p>
           </div>
         </div>
@@ -70,7 +70,7 @@ const FacultyDashboard = () => {
             <BiTask className=' text-white text-[25px]' />
           </div>
           <div className='flex gap-2 items-baseline '>
-            <p className=" font-medium text-yellow-300 text-lg">Tasks Completed</p>
+            <p className="hidden sm:block font-medium text-yellow-300 text-lg">Tasks Completed</p>
             <p className=" font-bold text-yellow-300 text-2xl">{taskCounts.isCompleted}</p>
           </div>
         </div>
@@ -79,7 +79,7 @@ const FacultyDashboard = () => {
             <MdPendingActions className='text-white text-[25px]' />
           </div>
           <div className='flex gap-2 items-baseline '>
-            <p className=" font-medium text-yellow-300 text-lg">Tasks Pending</p>
+            <p className="hidden sm:block font-medium text-yellow-300 text-lg">Tasks Pending</p>
             <p className=" font-bold text-yellow-300 text-2xl">{taskCounts.isPending}</p>
           </div>
         </div>

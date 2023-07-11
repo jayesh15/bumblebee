@@ -7,3 +7,27 @@ export const getStudents = async(req, res, next)=>{
         next(error)
     }
 }
+
+export const getStudent = async (req, res, next) => {
+    try {
+      const userId = req.userId; 
+  
+      const student = await Student.findById(userId);
+  
+      if (!student) {
+        return res.status(404).json({ message: 'Student not found' });
+      }
+  
+      res.status(200).send(student);
+    } catch (error) {
+      next(error);
+    }
+  };
+  
+  
+  
+  
+  
+  
+  
+  
