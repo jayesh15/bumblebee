@@ -31,7 +31,7 @@ const Tasks = () => {
 
       {
         isloadingTasks ? "Loading tasks..." : isErrorTasks ? "Something went Wrong" : (
-          filteredTasks.length === 0 ? "No Task Left" : (
+          filteredTasks.length === 0 ? "No Task Assigned" : (
             filteredTasks.map((task) => (
 
               <div key={task._id} className="flex flex-col items-center gap-2 w-full px-2 md:px-4 py-4 border-[1px] border-gray-300 rounded-lg">
