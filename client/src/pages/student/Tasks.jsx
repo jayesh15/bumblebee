@@ -28,7 +28,7 @@ const Tasks = () => {
 
   return (
     <div className="  flex flex-col p-4 gap-4 w-full items-center">
-
+      <h1 className=" font-bold text-xl tracking-wide">Assigned Tasks</h1>
       {
         isloadingTasks ? "Loading tasks..." : isErrorTasks ? "Something went Wrong" : (
           filteredTasks.length === 0 ? "No Task Assigned" : (

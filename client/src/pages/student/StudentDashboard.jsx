@@ -40,7 +40,11 @@ const StudentDashboard = () => {
                 {
                   isloadingTasks ? "Loading Details..." :
                     isErrorTasks ? "Something went Wrong" : (
-                      tasks.length === 0 ? (<p className=" text-lg text-gray-700" >No task Remaining</p>) : (
+                      tasks.length === 0 ? (
+                        <>
+                          <p className=" text-lg text-gray-700">You have <span className=" font-bold">No tasks</span> remaining.</p>
+                          <p className=" text-lg text-gray-700 font-semibold">Keep up the good work!</p>
+                        </>) : (
                         <>
                           <p className=" text-lg text-gray-700">You have completed <span className=" font-bold">{taskCounts.isCompleted} tasks</span> and <span className=" font-bold">{taskCounts.isPending} task</span> is remaining.</p>
                           <p className=" text-lg text-gray-700 font-semibold">Keep up the good work!</p>
