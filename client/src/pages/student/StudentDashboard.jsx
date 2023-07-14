@@ -1,5 +1,32 @@
+import { useOutletContext } from "react-router-dom";
 const StudentDashboard = () => {
-  const user = JSON.parse(localStorage.getItem('currentUser'))
+  const [isloadingTasks, isErrorTasks, tasks] = useOutletContext();
+  const user = JSON.parse(localStorage.getItem('currentUser'));
+  // Calculate task counts
+  const calculateTaskCounts = () => {
+    if (isloadingTasks || isErrorTasks) {
+      return {
+        isPending: 0,
+        isCompleted: 0,
+        total: 0,
+      };
+    }
+
+    const counts = {
+      isPending: 0,
+      isCompleted: 0,
+      total: tasks.length,
+    };
+
+    tasks.forEach((task) => {
+      if (task.isPending) counts.isPending++;
+      if (task.isCompleted) counts.isCompleted++;
+    });
+
+    return counts;
+  };
+  const taskCounts = calculateTaskCounts();
+
   return (
     <div className="p-4 h-full flex flex-col items-center w-full">
       {/**OverView */}
@@ -9,8 +36,18 @@ const StudentDashboard = () => {
             <div className="flex flex-col items-start p-2 gap-4">
               <h1 className=" text-blue-900 font-bold text-xl">Hello, {user.username}</h1>
               <div className="flex flex-col gap-1">
-                <p className=" text-lg text-gray-700">You have completed <span className=" font-bold">2 tasks</span> and <span className=" font-bold">1 task</span> is remaining today.</p>
-                <p className=" text-lg text-gray-700 font-semibold">Keep up the good work!</p>
+
+                {
+                  isloadingTasks ? "Loading Details..." :
+                    isErrorTasks ? "Something went Wrong" : (
+                      tasks.length === 0 ? (<p className=" text-lg text-gray-700" >No task Remaining</p>) : (
+                        <>
+                          <p className=" text-lg text-gray-700">You have completed <span className=" font-bold">{taskCounts.isCompleted} tasks</span> and <span className=" font-bold">{taskCounts.isPending} task</span> is remaining.</p>
+                          <p className=" text-lg text-gray-700 font-semibold">Keep up the good work!</p>
+                        </>
+                      )
+                    )
+                }
               </div>
             </div>
           </div>

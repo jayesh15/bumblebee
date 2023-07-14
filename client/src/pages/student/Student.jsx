@@ -4,8 +4,14 @@ import { useEffect, useState } from "react"
 import MobileNavbar from "../../components/student/MobileNavbar"
 import StudentProfile from "../../components/student/StudentProfile"
 import StudentHeader from "../../components/student/StudentHeader"
+import newRequest from "../../utils/newRequest"
+import { useQuery } from "@tanstack/react-query"
 
 const Student = () => {
+  const { isLoading: isloadingTasks, isError: isErrorTasks, data: tasks } = useQuery({
+    queryKey: ['tasks'],
+    queryFn: () => newRequest.get('tasks').then((res) => res.data)
+  })
   const [isMobile, setIsMobile] = useState(false)
   const [isProfile, setIsProfile] = useState(false)
   useEffect(() => {
@@ -30,7 +36,7 @@ const Student = () => {
         {
           !isMobile && <StudentHeader/>
         }
-        <Outlet />
+        <Outlet context={[isloadingTasks, isErrorTasks, tasks]} />
       </div>
       {
         isProfile && <StudentProfile/>
