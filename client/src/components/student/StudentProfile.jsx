@@ -64,6 +64,9 @@ const StudentProfile = ({isloadingTasks, isErrorTasks, tasks}) => {
                                                             <div className=' overflow-auto w-full h-full flex'>
                                                                 <h1 className='font-bold'>{task.title}</h1>
                                                             </div>
+                                                            <div className=' overflow-auto w-full h-full flex'>
+                                                                <h1 className='font-semibold text-sm text-gray-500'>{new Date(task.createdAt).toLocaleDateString('en-GB')}</h1>
+                                                            </div>
 
                                                         </div>
                                                     </div>
