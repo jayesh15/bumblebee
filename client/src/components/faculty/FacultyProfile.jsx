@@ -1,33 +1,20 @@
 import { BsBell } from 'react-icons/bs'
 import { Link } from 'react-router-dom'
 
-const Tasks = [
-    {
-        id: 1,
-        title: "Task 1",
-        date: "13",
-        month: "Jun",
-        subject: "Subject 1",
-        teacher: "Teacher 1"
-    },
-    {
-        id: 2,
-        title: "Task 2",
-        date: "15",
-        month: "Jul",
-        subject: "Subject 1",
-        teacher: "Teacher 1"
-    },
-    {
-        id: 3,
-        title: "Task 3",
-        date: "18",
-        month: "Jul",
-        subject: "Subject 2",
-        teacher: "Teacher 2"
+
+const FacultyProfile = ({isloadingTasks, isErrorTasks, tasks}) => {
+    
+    const getFormattedDate = (dateString) => {
+        const date = new Date(dateString);
+        const day = date.getDate().toString().padStart(2, '0'); // Get the day and pad with leading zero if necessary
+        const month = date.toLocaleString('default', { month: 'short' }); // Get the month abbreviation
+    
+        return {
+            day,
+            month
+        };
+    
     }
-]
-const FacultyProfile = () => {
     const user = JSON.parse(localStorage.getItem('currentUser'))
     return (
         <div className="flex w-[300px] h-full border-l-[1px] bg-white">
@@ -50,33 +37,36 @@ const FacultyProfile = () => {
                     <div className='flex flex-col w-full'>
                         <div className='flex w-full justify-between items-center'>
                             <h1 className=' font-bold text-lg tracking-wide'>Tasks</h1>
-                            <Link to='/student/tasks'>
+                            <Link to='/faculty/managetasks'>
                                 <p className=' text-blue-600 font-semibold'>See All</p>
                             </Link>
                         </div>
-                        <div className='mt-4 flex flex-col w-full gap-4'>
+                        <div className='mt-4 flex flex-col items-center w-full gap-4'>
                             {
-                                Tasks.map((task) => (
-                                    <div key={task.id} className='flex gap-2 h-16 w-full justify-start items-center'>
-                                        <div className=' border-[1px] border-gray-300 h-full justify-between w-20  rounded-md overflow-hidden flex items-center flex-col'>
-                                            <div className='flex w-full h-full items-center justify-center'>
-                                                <p className=' font-semibold'>{task.date}</p>
-                                            </div>
-                                            <div className='bg-blue-600 flex w-full h-full items-center justify-center'>
-                                                <p className=' text-white text-sm'>{task.month}</p>
-                                            </div>
-                                        </div>
-                                        <div className='flex flex-col items-start w-full h-full justify-between py-1'>
-                                            <div className=' overflow-auto w-full h-full flex'>
-                                                <h1 className='font-bold'>{task.title}</h1>
-                                            </div>
-                                            <div className='flex items-start'>
-                                                <p className=' text-sm text-gray-600'>{task.subject}, </p>
-                                                <p className='ml-1 text-sm font-medium text-gray-600'>{task.teacher}</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                ))
+                                isloadingTasks ? "loading Tasks..." :
+                                    isErrorTasks ? "Something went wrong" :
+                                        (
+                                            tasks.length === 0 ? "No Tasks Assigned" : (
+                                                tasks.map((task) => (
+                                                    <div key={task.id} className='flex gap-2 h-16 w-full justify-start items-center'>
+                                                        <div className=' border-[1px] border-gray-300 h-full justify-between w-20  rounded-md overflow-hidden flex items-center flex-col'>
+                                                            <div className='flex w-full h-full items-center justify-center'>
+                                                                <p className=' font-semibold'>{getFormattedDate(task.deadline).day}</p>
+                                                            </div>
+                                                            <div className='bg-blue-600 flex w-full h-full items-center justify-center'>
+                                                                <p className=' text-white text-sm'>{getFormattedDate(task.deadline).month}</p>
+                                                            </div>
+                                                        </div>
+                                                        <div className='flex flex-col items-start w-full h-full justify-between py-1'>
+                                                            <div className=' overflow-auto w-full h-full flex'>
+                                                                <h1 className='font-bold'>{task.title}</h1>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                ))
+                                            )
+                                        )
                             }
                         </div>
 
