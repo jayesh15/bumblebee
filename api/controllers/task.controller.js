@@ -66,3 +66,21 @@ export const doneTask = async (req, res, next) => {
     next(error);
   }
 };
+
+export const deleteTask = async(req, res, next)=>{
+  try {
+    const isteacher = await User.findById(req.userId)
+    if(isteacher.role !== "teacher"){
+      return next(createError(403,"Only Teacher can delete Tasks"))
+    }
+    const task = await Task.findById(req.params.taskId)
+    if(!task){
+      return next(createError(404,"Task not Found"))
+    }
+    await Task.deleteOne({ _id: req.params.taskId });
+    res.status(200).send("Task has been Deleted");
+    
+  } catch (error) {
+    next(error)
+  }
+}

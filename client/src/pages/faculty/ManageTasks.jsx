@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query"
 import newRequest from "../../utils/newRequest"
 import { AiOutlineClose } from 'react-icons/ai'
-import { HiDotsVertical } from 'react-icons/hi'
+import {MdDelete} from 'react-icons/md'
 import { useState } from "react"
 import TaskForm from "../../components/faculty/TaskForm"
 
@@ -11,21 +11,33 @@ const ManageTasks = () => {
     queryFn: () => newRequest.get('students').then((res) => res.data)
   })
   console.log(data)
-  const { isLoading: isloadingTasks, isError: isErrorTasks, data: tasks } = useQuery({
+  const { isLoading: isloadingTasks, isError: isErrorTasks, data: tasks, refetch } = useQuery({
     queryKey: ['tasks'],
     queryFn: () => newRequest.get('tasks').then((res) => res.data)
   })
-  
+
 
   const [openTask, setOpenTask] = useState(false)
   const [selectedStudentId, setSelectedStudentId] = useState(null);
   const handleTask = (studentId) => {
     setOpenTask((prev) => !prev)
     setSelectedStudentId(studentId);
-    
+
   }
   const handleClose = () => {
     setOpenTask(false)
+  }
+
+  const handleDeleteTask = (taskId) => {
+
+
+    try {
+      newRequest.delete(`tasks/${taskId}`)
+      alert("Task Deleted Successfully")
+      refetch()
+    } catch (error) {
+      alert(error)
+    }
   }
   return (
     <div className="p-4 pb-24 flex flex-col items-center justify-start w-full h-full">
@@ -86,7 +98,7 @@ const ManageTasks = () => {
                                 <h1 className=" font-semibold">{task.title}</h1>
                                 <p className="">Assigned: <span className=" text-sm">{task.createdAt.slice(0, 10)}</span></p>
                               </div>
-                              
+
                               <div className=" flex gap-2">
                                 <p className="">Assigned: <span className=" text-sm">{task.deadline.slice(0, 10)}</span></p>
 
@@ -97,7 +109,7 @@ const ManageTasks = () => {
                         </div>
                         <div className=" relative">
 
-                          <HiDotsVertical className=" text-[20px] cursor-pointer" />
+                          <MdDelete onClick={()=>{handleDeleteTask(task._id)}} className=" text-red-500 text-[20px] cursor-pointer" />
                         </div>
                       </div>
 
