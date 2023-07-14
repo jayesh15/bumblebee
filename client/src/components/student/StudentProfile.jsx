@@ -1,15 +1,9 @@
 import { BsBell } from 'react-icons/bs'
 import { Link } from 'react-router-dom'
-import newRequest from '../../utils/newRequest'
-import { useQuery } from '@tanstack/react-query'
 
-
-const StudentProfile = () => {
+const StudentProfile = ({isloadingTasks, isErrorTasks, tasks}) => {
     const user = JSON.parse(localStorage.getItem('currentUser'))
-    const { isLoading: isloadingTasks, isError: isErrorTasks, data: tasks, refetch } = useQuery({
-        queryKey: ['tasks'],
-        queryFn: () => newRequest.get('tasks').then((res) => res.data)
-    })
+   
 
 
 

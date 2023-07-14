@@ -39,7 +39,7 @@ const Student = () => {
         <Outlet context={[isloadingTasks, isErrorTasks, tasks]} />
       </div>
       {
-        isProfile && <StudentProfile/>
+        isProfile && <StudentProfile isloadingTasks={isloadingTasks} isErrorTasks = {isErrorTasks} tasks={tasks} />
       }
     
 
