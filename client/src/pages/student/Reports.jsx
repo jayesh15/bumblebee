@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query"
 import newRequest from "../../utils/newRequest"
 const Reports = () => {
   const { isLoading: isloadingReports, isError: isErrorReports, data: reports, refetch } = useQuery({
-    queryKey: ['tasks'],
+    queryKey: ['reports'],
     queryFn: () => newRequest.get('reports').then((res) => res.data)
   })
   console.log(reports);
